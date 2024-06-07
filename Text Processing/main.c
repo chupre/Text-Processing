@@ -20,7 +20,7 @@ typedef struct
 // Displays when keys are not correct or with --help
 const char* help =
 {
-"-с/--config — ключ для передачи пути к конфигурационному файлу.\n\
+"-с/ --config — ключ для передачи пути к конфигурационному файлу.\n\
 -i / --input — ключ для передачи пути к входному файлу.\n\
 -o / --output — ключ для передачи пути к выходному файлу.\n\
 -h / --help — ключ для вывода справки.\n\
@@ -293,6 +293,14 @@ void get_cfg_opt(cfg_opt* opt)
 					opt->token[counter++] = num[i];
 					opt->token[counter] = 0;
 				}
+
+				if (c != '\n' && c != EOF)
+				{
+					opt->token[counter++] = c;
+					opt->token[counter] = 0;
+				}
+
+				continue;
 			}
 		}
 
